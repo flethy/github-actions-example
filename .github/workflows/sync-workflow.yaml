@@ -1,0 +1,21 @@
+name: "Sync Workflow with flethy"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    name: Sync
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Upload workflow
+        run: |
+          curl -L -X PUT "https://api.flethy.com/v1/w/${{ secrets.FLETHY_WORKSPACE_ID }}/p/${{ secrets.FLETHY_PROJECT_ID }}/wf" \
+            -H 'Content-Type: application/json' \
+            -H 'Accept: application/json' \
+            -H "Authorization: Bearer ${{ secrets.FLETHY_ACCESS_TOKEN }}" \
+            -d @./workflow.json

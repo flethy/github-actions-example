@@ -1,0 +1,18 @@
+{
+  "env": {
+    "WEBHOOKSITE_UUID": "80370a44-bf66-49f5-bdb8-195d4c0cdd10"
+  },
+  "workflowId": "d996943f-aa33-4881-84cf-ed59a0ae5699",
+  "workflow": [
+    {
+      "id": "webhooksite-post",
+      "kind": "webhooksite.core.post",
+      "param:uuid": "==>env==>WEBHOOKSITE_UUID",
+      "header:x-test-header": "flethy-prod",
+      "body:body": {
+        "hello": "world!"
+      }
+    }
+  ],
+  "name": "Webhooksite-synced"
+}
